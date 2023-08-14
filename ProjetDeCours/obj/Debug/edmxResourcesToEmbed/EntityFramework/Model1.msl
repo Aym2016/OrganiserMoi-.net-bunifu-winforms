@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OrganizeMeModelStoreContainer" CdmEntityContainer="OrganizeMeEntities">
+    <EntitySetMapping Name="conjointe">
+      <EntityTypeMapping TypeName="OrganizeMeModel.conjointe">
+        <MappingFragment StoreEntitySet="conjointe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="fonction" ColumnName="fonction" />
+          <ScalarProperty Name="IdPer" ColumnName="IdPer" />
+          <ScalarProperty Name="age_" ColumnName="age " />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enfant">
+      <EntityTypeMapping TypeName="OrganizeMeModel.enfant">
+        <MappingFragment StoreEntitySet="enfant">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="fonction" ColumnName="fonction" />
+          <ScalarProperty Name="IdPer" ColumnName="IdPer" />
+          <ScalarProperty Name="age_" ColumnName="age " />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parent">
+      <EntityTypeMapping TypeName="OrganizeMeModel.parent">
+        <MappingFragment StoreEntitySet="parent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="fonction" ColumnName="fonction" />
+          <ScalarProperty Name="IdPer" ColumnName="IdPer" />
+          <ScalarProperty Name="age_" ColumnName="age " />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personne">
+      <EntityTypeMapping TypeName="OrganizeMeModel.personne">
+        <MappingFragment StoreEntitySet="personne">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="fonction" ColumnName="fonction" />
+          <ScalarProperty Name="dateNaiss" ColumnName="dateNaiss" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+          <ScalarProperty Name="situation" ColumnName="situation" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="numTel" ColumnName="numTel" />
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="NbEnfant" ColumnName="NbEnfant" />
+          <ScalarProperty Name="enfant" ColumnName="enfant" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table">
+      <EntityTypeMapping TypeName="OrganizeMeModel.Table">
+        <MappingFragment StoreEntitySet="Table">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tache">
+      <EntityTypeMapping TypeName="OrganizeMeModel.tache">
+        <MappingFragment StoreEntitySet="tache">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="caracteristque" ColumnName="caracteristque" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tacherResp">
+      <EntityTypeMapping TypeName="OrganizeMeModel.tacherResp">
+        <MappingFragment StoreEntitySet="tacherResp">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="idper" ColumnName="idper" />
+          <ScalarProperty Name="resp" ColumnName="resp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

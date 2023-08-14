@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrganizeMeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="conjointe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="fonction" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdPer" Type="int" />
+          <Property Name="age " Type="int" />
+          <Property Name="sexe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="enfant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="fonction" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdPer" Type="int" />
+          <Property Name="age " Type="int" />
+          <Property Name="sexe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="parent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="fonction" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdPer" Type="int" />
+          <Property Name="age " Type="int" />
+          <Property Name="sexe" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="fonction" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateNaiss" Type="date" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="sexe" Type="nvarchar" MaxLength="50" />
+          <Property Name="situation" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="numTel" Type="nchar" MaxLength="20" />
+          <Property Name="parent" Type="nvarchar" MaxLength="50" />
+          <Property Name="NbEnfant" Type="int" />
+          <Property Name="enfant" Type="nvarchar" MaxLength="50" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tache">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="caracteristque" Type="nvarchar" MaxLength="1000" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tacherResp">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="idper" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="idper" Type="int" Nullable="false" />
+          <Property Name="resp" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_conjointe_ToTable">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="conjointe" Type="Self.conjointe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="conjointe">
+              <PropertyRef Name="IdPer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table1_ToTabl&#xD;&#xA;&#x9;">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="enfant" Type="Self.enfant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="enfant">
+              <PropertyRef Name="IdPer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table1_ToTable">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="parent" Type="Self.parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="parent">
+              <PropertyRef Name="IdPer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tacherResp_ToTable">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="tacherResp" Type="Self.tacherResp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tacherResp">
+              <PropertyRef Name="idper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tacherResp_ToTable_1">
+          <End Role="tache" Type="Self.tache" Multiplicity="1" />
+          <End Role="tacherResp" Type="Self.tacherResp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tache">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tacherResp">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrganizeMeModelStoreContainer">
+          <EntitySet Name="conjointe" EntityType="Self.conjointe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="enfant" EntityType="Self.enfant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parent" EntityType="Self.parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personne" EntityType="Self.personne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tache" EntityType="Self.tache" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tacherResp" EntityType="Self.tacherResp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_conjointe_ToTable" Association="Self.FK_conjointe_ToTable">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="conjointe" EntitySet="conjointe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table1_ToTabl&#xD;&#xA;&#x9;" Association="Self.FK_Table1_ToTabl&#xD;&#xA;&#x9;">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="enfant" EntitySet="enfant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table1_ToTable" Association="Self.FK_Table1_ToTable">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="parent" EntitySet="parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tacherResp_ToTable" Association="Self.FK_tacherResp_ToTable">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="tacherResp" EntitySet="tacherResp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tacherResp_ToTable_1" Association="Self.FK_tacherResp_ToTable_1">
+            <End Role="tache" EntitySet="tache" />
+            <End Role="tacherResp" EntitySet="tacherResp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrganizeMeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="conjointe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdPer" Type="Int32" />
+          <Property Name="age_" Type="Int32" />
+          <Property Name="sexe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personne" Relationship="Self.FK_conjointe_ToTable" FromRole="conjointe" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="enfant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdPer" Type="Int32" />
+          <Property Name="age_" Type="Int32" />
+          <Property Name="sexe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personne" Relationship="Self.FK_Table1_ToTabl___" FromRole="enfant" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="parent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdPer" Type="Int32" />
+          <Property Name="age_" Type="Int32" />
+          <Property Name="sexe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personne" Relationship="Self.FK_Table1_ToTable" FromRole="parent" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateNaiss" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sexe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="situation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numTel" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="parent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NbEnfant" Type="Int32" />
+          <Property Name="enfant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="conjointe" Relationship="Self.FK_conjointe_ToTable" FromRole="personne" ToRole="conjointe" />
+          <NavigationProperty Name="enfant1" Relationship="Self.FK_Table1_ToTabl___" FromRole="personne" ToRole="enfant" />
+          <NavigationProperty Name="parent1" Relationship="Self.FK_Table1_ToTable" FromRole="personne" ToRole="parent" />
+          <NavigationProperty Name="tacherResp" Relationship="Self.FK_tacherResp_ToTable" FromRole="personne" ToRole="tacherResp" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tache">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="caracteristque" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tacherResp" Relationship="Self.FK_tacherResp_ToTable_1" FromRole="tache" ToRole="tacherResp" />
+        </EntityType>
+        <EntityType Name="tacherResp">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="idper" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="idper" Type="Int32" Nullable="false" />
+          <Property Name="resp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personne" Relationship="Self.FK_tacherResp_ToTable" FromRole="tacherResp" ToRole="personne" />
+          <NavigationProperty Name="tache" Relationship="Self.FK_tacherResp_ToTable_1" FromRole="tacherResp" ToRole="tache" />
+        </EntityType>
+        <Association Name="FK_conjointe_ToTable">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="conjointe" Type="Self.conjointe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="conjointe">
+              <PropertyRef Name="IdPer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table1_ToTabl___">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="enfant" Type="Self.enfant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="enfant">
+              <PropertyRef Name="IdPer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table1_ToTable">
+          <End Role="personne" Type="Self.personne" Multiplicity="0..1" />
+          <End Role="parent" Type="Self.parent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="parent">
+              <PropertyRef Name="IdPer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tacherResp_ToTable">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="tacherResp" Type="Self.tacherResp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tacherResp">
+              <PropertyRef Name="idper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tacherResp_ToTable_1">
+          <End Role="tache" Type="Self.tache" Multiplicity="1" />
+          <End Role="tacherResp" Type="Self.tacherResp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tache">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tacherResp">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrganizeMeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="conjointe" EntityType="Self.conjointe" />
+          <EntitySet Name="enfant" EntityType="Self.enfant" />
+          <EntitySet Name="parent" EntityType="Self.parent" />
+          <EntitySet Name="personne" EntityType="Self.personne" />
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <EntitySet Name="tache" EntityType="Self.tache" />
+          <EntitySet Name="tacherResp" EntityType="Self.tacherResp" />
+          <AssociationSet Name="FK_conjointe_ToTable" Association="Self.FK_conjointe_ToTable">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="conjointe" EntitySet="conjointe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table1_ToTabl___" Association="Self.FK_Table1_ToTabl___">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="enfant" EntitySet="enfant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table1_ToTable" Association="Self.FK_Table1_ToTable">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="parent" EntitySet="parent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tacherResp_ToTable" Association="Self.FK_tacherResp_ToTable">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="tacherResp" EntitySet="tacherResp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tacherResp_ToTable_1" Association="Self.FK_tacherResp_ToTable_1">
+            <End Role="tache" EntitySet="tache" />
+            <End Role="tacherResp" EntitySet="tacherResp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrganizeMeModelStoreContainer" CdmEntityContainer="OrganizeMeEntities">
+          <EntitySetMapping Name="conjointe">
+            <EntityTypeMapping TypeName="OrganizeMeModel.conjointe">
+              <MappingFragment StoreEntitySet="conjointe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="fonction" ColumnName="fonction" />
+                <ScalarProperty Name="IdPer" ColumnName="IdPer" />
+                <ScalarProperty Name="age_" ColumnName="age " />
+                <ScalarProperty Name="sexe" ColumnName="sexe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enfant">
+            <EntityTypeMapping TypeName="OrganizeMeModel.enfant">
+              <MappingFragment StoreEntitySet="enfant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="fonction" ColumnName="fonction" />
+                <ScalarProperty Name="IdPer" ColumnName="IdPer" />
+                <ScalarProperty Name="age_" ColumnName="age " />
+                <ScalarProperty Name="sexe" ColumnName="sexe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parent">
+            <EntityTypeMapping TypeName="OrganizeMeModel.parent">
+              <MappingFragment StoreEntitySet="parent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="fonction" ColumnName="fonction" />
+                <ScalarProperty Name="IdPer" ColumnName="IdPer" />
+                <ScalarProperty Name="age_" ColumnName="age " />
+                <ScalarProperty Name="sexe" ColumnName="sexe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personne">
+            <EntityTypeMapping TypeName="OrganizeMeModel.personne">
+              <MappingFragment StoreEntitySet="personne">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="fonction" ColumnName="fonction" />
+                <ScalarProperty Name="dateNaiss" ColumnName="dateNaiss" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sexe" ColumnName="sexe" />
+                <ScalarProperty Name="situation" ColumnName="situation" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="numTel" ColumnName="numTel" />
+                <ScalarProperty Name="parent" ColumnName="parent" />
+                <ScalarProperty Name="NbEnfant" ColumnName="NbEnfant" />
+                <ScalarProperty Name="enfant" ColumnName="enfant" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="OrganizeMeModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tache">
+            <EntityTypeMapping TypeName="OrganizeMeModel.tache">
+              <MappingFragment StoreEntitySet="tache">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="caracteristque" ColumnName="caracteristque" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tacherResp">
+            <EntityTypeMapping TypeName="OrganizeMeModel.tacherResp">
+              <MappingFragment StoreEntitySet="tacherResp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="idper" ColumnName="idper" />
+                <ScalarProperty Name="resp" ColumnName="resp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c865ec2bbdf74998918f6d46c7368eb2" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="OrganizeMeModel.conjointe" Width="1.5" PointX="0.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrganizeMeModel.enfant" Width="1.5" PointX="4.875" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrganizeMeModel.parent" Width="1.5" PointX="7.125" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrganizeMeModel.personne" Width="1.5" PointX="2.375" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrganizeMeModel.Table" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrganizeMeModel.tache" Width="1.5" PointX="9.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrganizeMeModel.tacherResp" Width="1.5" PointX="6.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="OrganizeMeModel.FK_conjointe_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="OrganizeMeModel.FK_Table1_ToTabl___" ManuallyRouted="false" />
+        <AssociationConnector Association="OrganizeMeModel.FK_Table1_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="OrganizeMeModel.FK_tacherResp_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="OrganizeMeModel.FK_tacherResp_ToTable_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
