@@ -1,8 +1,10 @@
 # OrganiserMoi-.net-bunifu-winforms 
 Conception et développement d’une application desktop pour la gestion des tâches
+les fonctionnalités : login, upload image pour profile , tous les types inscriptions selon situation de l'utilisateur parent  avec des enfants ou non ainsi marié ou non ,tous les crud , génération des documents pdf et excel
 ![image](https://github.com/Aym2016/OrganiserMoi-.net-bunifu-winforms/assets/42209140/f7b99ac2-d40e-4614-8731-ca9ba1d27a75) 
 Dans le but d'aider les gens à mieux s'organiser, Nous avons créer une application en C# . L'application contient deux partie une première 
 exécuter lors du premier lancement de notre application par un utilisateur, la deuxième sera exécuter par la suite, pour chaque lancement selon la configuration précisée par l’utilisateur
+
 ![image](https://github.com/Aym2016/OrganiserMoi-.net-bunifu-winforms/assets/42209140/5cd6cdc3-6cd6-41e9-861e-e164f1098d6e)
 
 
